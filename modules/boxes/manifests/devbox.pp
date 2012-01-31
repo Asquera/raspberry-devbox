@@ -161,7 +161,7 @@ class boxes::devbox {
     environment => "HOME=/home/vagrant",
     creates => "/home/vagrant/.scratchbox2",
     subscribe => Exec["install-scratchbox2"],
-    require => Exec["install-qemu"],
+    require => [Exec["install-qemu"], Exec["unpack-fedora-rootfs"]],
     refreshonly => true,
     user => vagrant,
     group => vagrant,
