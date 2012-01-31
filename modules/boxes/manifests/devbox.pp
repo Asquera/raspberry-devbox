@@ -135,4 +135,24 @@ class boxes::devbox {
     group => vagrant
   }
   
+  exec {"configure-qemu":
+    command => "/home/vagrant/src/qemu/configure --prefix=/home/vagrant/raspberry_pi_development/qemu --target-list=arm-linux-user,arm-softmmu",
+    cwd => "/home/vagrant/src/qemu/",
+    creates => "/home/vagrant/src/qemu/config.log",
+    user => vagrant,
+    group => vagrant,
+    subscribe => Exec["download-qemu"],
+    refreshonly => true
+  }
+  
+  exec {"install-qemu":
+    command => "make install",
+    cwd => "/home/vagrant/src/qemu",
+    creates => "/home/vagrant/raspberry_pi_development/qemu",
+    user => vagrant,
+    group => vagrant,
+    subscribe => Exec["configure-qemu"],
+    refreshonly => true
+  }
+
 }
