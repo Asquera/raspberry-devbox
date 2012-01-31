@@ -35,7 +35,7 @@ class boxes::devbox {
   }
  
   # scratchbox build requirements 
-  package {["libsdl1.2-dev", "libncurses5", "libncurses5-dev", "autoconf", "fakeroot", "realpath"]:
+  package {["libsdl1.2-dev", "libncurses5", "libncurses5-dev", "autoconf", "fakeroot", "realpath", "libc6-i386", "libc6-dev-i386"]:
     ensure => present
   }
  
