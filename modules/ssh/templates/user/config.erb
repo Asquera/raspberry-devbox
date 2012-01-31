@@ -1,0 +1,11 @@
+# this file is managed by puppet. local changes will not be retained
+
+Host *
+  SendEnv GIT_*
+  ForwardAgent yes
+
+# legacy support
+Host github*
+	User git
+	Hostname github.com
+	PreferredAuthentications publickey
