@@ -20,8 +20,9 @@ Vagrant::Config.run do |config|
     box.vm.box = "ubuntu-10.04.3-server-amd64-asq"
     box.vm.box_url = "http://asquera-share.s3.amazonaws.com/boxes/base/ubuntu-10.04.3-server-amd64-asq.box"
     # uncomment the following line if you want the box to start in gui mode
-    box.vm.boot_mode = :gui
-    box.vm.network :hostonly, "33.33.33.151"
+    #box.vm.boot_mode = :gui
+    # add a hostonly network if desired
+    #box.vm.network :hostonly, "33.33.33.151"
 
     box.vm.provision :puppet do |puppet|
       puppet.manifests_path = "puppetmanifests"
