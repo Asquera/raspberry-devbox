@@ -18,7 +18,7 @@ Vagrant::Config.run do |config|
 
   config.vm.define :nox do |box|
     box.vm.box = "ubuntu-10.04.3-server-amd64-asq"
-    #gbox.vm.box_url = "http://example.org/path/to/box"
+    box.vm.box_url = "http://asquera-share.s3.amazonaws.com/boxes/base/ubuntu-10.04.3-server-amd64-asq.box"
     # uncomment the following line if you want the box to start in gui mode
     box.vm.boot_mode = :gui
     box.vm.network :hostonly, "33.33.33.151"
@@ -27,7 +27,7 @@ Vagrant::Config.run do |config|
       puppet.manifests_path = "puppetmanifests"
       puppet.manifest_file = "raspberry-nox.pp"
       puppet.module_path = "modules"
-      puppet.options = "--verbose --debug"
+      puppet.options = ""
     end
   end
 
