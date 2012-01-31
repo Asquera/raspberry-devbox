@@ -155,4 +155,16 @@ class boxes::devbox {
     refreshonly => true
   }
 
+  exec {"init-scratchbox2":
+    command => "sb2-init raspberry /home/vagrant/raspberry_pi_development/arm-2011.03/bin/arm-none-linux-gnueabi-gcc",
+    cwd => "/home/vagrant/raspberry_pi_development/rootfs_f14",
+    environment => "HOME=/home/vagrant",
+    creates => "/home/vagrant/.scratchbox2",
+    subscribe => Exec["install-scratchbox2"],
+    require => Exec["install-qemu"],
+    refreshonly => true,
+    user => vagrant,
+    group => vagrant,
+  }
+
 }
