@@ -9,6 +9,7 @@ Install Vagrant 0.9, clone this repository and run "vagrant up". Requires a 64bi
 ## Todo
 
 * all of this is still quite rough
+* the path to qemu and scratchbox2 is currently not set up properly, add a 'export PATH="/home/vagrant/raspberry_pi_development/qemu/bin/:/home/vagrant/raspberry_pi_development/scratchbox2/bin:$PATH"' to the .bashrc
 * improve on the readme
 * add hostonly networking and nfs share
 * add a second vm that has X
