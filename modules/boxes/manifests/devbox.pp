@@ -1,5 +1,5 @@
 class boxes::devbox {
-  Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/", "/home/vagrant/.rvm/bin" ], timeout => 600 }
+  Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/", "/home/vagrant/raspberry_pi_development/scratchbox2/bin", "/home/vagrant/raspberry_pi_development/qemu/bin" ], timeout => 600 }
 	
   include sysconfig
   include sysconfig::sudoers
