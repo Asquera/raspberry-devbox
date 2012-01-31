@@ -25,7 +25,7 @@ Vagrant::Config.run do |config|
 
     box.vm.provision :puppet do |puppet|
       puppet.manifests_path = "puppetmanifests"
-      puppet.manifest_file = "rasperry-nox.pp"
+      puppet.manifest_file = "raspberry-nox.pp"
       puppet.module_path = "modules"
       puppet.options = "--verbose --debug"
     end

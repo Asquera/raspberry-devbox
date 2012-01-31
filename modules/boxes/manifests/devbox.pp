@@ -45,7 +45,7 @@ class boxes::devbox {
     group => "vagrant"
   }
   
-  file {"/home/vagrant/rasperry_pi_development":
+  file {"/home/vagrant/raspberry_pi_development":
     ensure => directory,
     owner => "vagrant",
     group => "vagrant"
@@ -60,11 +60,11 @@ class boxes::devbox {
   }
   
   exec {"unpack-arm-toolchain":
-    command => "tar xjvf /home/vagrant/src/arm-2011.03-41-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2 -C /home/vagrant/rasperry_pi_development",
-    creates => "/home/vagrant/rasperry_pi_development/arm-2011.03/",
+    command => "tar xjvf /home/vagrant/src/arm-2011.03-41-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2 -C /home/vagrant/raspberry_pi_development",
+    creates => "/home/vagrant/raspberry_pi_development/arm-2011.03/",
     subscribe => Exec["download-arm-toolchain"],
     refreshonly => true,
-    require => File["/home/vagrant/rasperry_pi_development"],
+    require => File["/home/vagrant/raspberry_pi_development"],
     user => vagrant,
     group => vagrant
   }
@@ -77,24 +77,24 @@ class boxes::devbox {
     group => vagrant
   }
   
-  file {"/home/vagrant/rasperry_pi_development/rootfs_f14":
+  file {"/home/vagrant/raspberry_pi_development/rootfs_f14":
     ensure => "directory",
-    require => File["/home/vagrant/rasperry_pi_development"],
+    require => File["/home/vagrant/raspberry_pi_development"],
     owner => vagrant,
     group => vagrant
   }
   
   exec {"unpack-fedora-rootfs":
-    command => "tar xjvpf /home/vagrant/src/rootfs-f14-minimal-RC1.tar.bz2 -C /home/vagrant/rasperry_pi_development/rootfs_f14",
-  #  creates => "/home/vagrant/rasperry_pi_development/rootfs_f14",
+    command => "tar xjvpf /home/vagrant/src/rootfs-f14-minimal-RC1.tar.bz2 -C /home/vagrant/raspberry_pi_development/rootfs_f14",
+  #  creates => "/home/vagrant/raspberry_pi_development/rootfs_f14",
     subscribe => Exec["download-fedora-rootfs"],
     refreshonly => true,
-    require => File["/home/vagrant/rasperry_pi_development/rootfs_f14"],
+    require => File["/home/vagrant/raspberry_pi_development/rootfs_f14"],
     # this must be run as root, we'll chown later
   }
   
   exec {"chown-fedora-rootfs":
-    command => "chown -R vagrant:vagrant /home/vagrant/rasperry_pi_development/rootfs_f14",
+    command => "chown -R vagrant:vagrant /home/vagrant/raspberry_pi_development/rootfs_f14",
     subscribe => Exec["unpack-fedora-rootfs"],
     refreshonly => true
   }
