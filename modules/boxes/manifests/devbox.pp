@@ -107,6 +107,26 @@ class boxes::devbox {
     group => vagrant
   }
   
+  exec {"autogen-scratchbox2":
+    command => "/home/vagrant/src/scratchbox2/autogen.sh",
+    cwd => "/home/vagrant/src/scratchbox2",
+    creates => "/home/vagrant/src/scratchbox2/configure",
+    user => vagrant,
+    group => vagrant,
+    subscribe => Exec["download-scratchbox2"],
+    refreshonly => true
+  }
+  
+  exec {"install-scratchbox2":
+    command => "make install prefix=/home/vagrant/raspberry_pi_development/scratchbox2",
+    cwd => "/home/vagrant/src/scratchbox2",
+    creates => "/home/vagrant/raspberry_pi_development/scratchbox2",
+    user => vagrant,
+    group => vagrant,
+    subscribe => Exec["autogen-scratchbox2"],
+    refreshonly => true
+  }
+  
   exec {"download-qemu":
     command => "git clone -q git://git.qemu.org/qemu.git /home/vagrant/src/qemu",
     creates => "/home/vagrant/src/qemu",
