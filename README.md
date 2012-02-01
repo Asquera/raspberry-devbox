@@ -111,6 +111,9 @@ Host app-vagrant
   SendEnv GIT_*
 ````
 
+## Bugs, Fixes, Improvement
+
+If you encounter a bug, please file a ticket. If you'd like to help, fork the repository, make your changes and send me a pull request. Please use feature-branches :).
 
 ## Todo
 
