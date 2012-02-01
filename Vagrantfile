@@ -6,20 +6,14 @@ Vagrant::Config.run do |config|
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
 
-  # Every Vagrant virtual environment requires a box to build off of.
-
-
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  # config.vm.box_url = "http://domain.com/path/to/above.box"
-
-  # Boot with a GUI so you can see the screen. (Default is headless)
-  config.vm.boot_mode = :gui
-
   config.vm.define :nox do |box|
+    # Every Vagrant virtual environment requires a box to build off of.
     box.vm.box = "ubuntu-10.04.3-server-amd64-asq"
+    # The url from where the 'config.vm.box' box will be fetched if it
+    # doesn't already exist on the user's system.
     box.vm.box_url = "http://asquera-share.s3.amazonaws.com/boxes/base/ubuntu-10.04.3-server-amd64-asq.box"
-    # uncomment the following line if you want the box to start in gui mode
+    
+    # Boot with a GUI so you can see the screen. (Default is headless)
     #box.vm.boot_mode = :gui
     # add a hostonly network if desired
     #box.vm.network :hostonly, "33.33.33.151"
