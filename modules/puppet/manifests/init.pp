@@ -10,6 +10,7 @@ class puppet {
 		ensure => "present",
     gid => "puppet",
     require => Group["puppet"]
+    require => User["puppet"]
 	}
   
 	
